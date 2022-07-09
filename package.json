@@ -1,0 +1,22 @@
+{
+  "name": "4to-desafio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19",
+    "router": "^1.3.7",
+    "to": "^0.2.9",
+    "update": "^0.7.4"
+  }
+}

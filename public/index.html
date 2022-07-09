@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" rel="noopener" target="_blank" href="./css/estilos.css">
+    <title>Producto</title>
+</head>
+
+<body>
+    <div id="contenedor">
+        <h1>Productos - Lista de Acciones</h1>
+
+        <ul>
+            <li><a href="/api/productos/todos">Ver todos los productos</a></li>
+            <li>
+                <form onsubmit="armadoURLVer()" method="GET" id="verProducto">
+                    <input type="submit" value="Quiero ver el producto">
+                    <input type="number" size="12" name="verID" required>
+                </form>
+            </li>
+        </ul>
+
+        <div id="contenedor_new">
+            <h2>Agregar Nuevo Producto</h2>
+            <form action="/api/productos" method="POST" id="nuevoProducto">
+                <label for="title">Titulo:</label><br>
+                <input name="title" required></input></br>
+                <label for="price">Precio:</label><br>
+                <input name="price" type="number"></input></br>
+                <label for="thumbnail">Link:</label><br>
+                <input name="thumbnail" type="url"></input></br>
+                <input type="submit" value="Agregar">
+            </form>
+        </div>
+
+        <div id="contenedor_upd">
+            <h2>Actualizar Producto</h2>
+            <h4>No logré que funcione el PUT desde acá</h4>
+            <form onsubmit="armadoURLUpdate()" method="PUT" id="actualizarProducto">
+                <label for="updateID">ID:</label><br>
+                <input name="updateID" type="number" required></input></br>
+                <label for="title">Titulo:</label><br>
+                <input name="title"></input></br>
+                <label for="price">Precio:</label><br>
+                <input name="price" type="number"></input></br>
+                <label for="thumbnail">Link:</label><br>
+                <input name="thumbnail" type="url"></input></br>
+                <input type="submit" value="Actualizar">
+            </form>
+        </div>
+
+        <div id="contenedor_del">
+            <h2>Eliminar Producto</h2>
+            <h4>El DELETE tampoco logré hacerlo funcionar</h4>
+            <form onsubmit="armadoURLDelete()" method="GET" id="eliminarProducto">
+                <label for="deleteID">ID:</label>
+                <input name="deleteID" type="number" required></input>
+                <input type="submit" value="Eliminar">
+            </form>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    function armadoURLVer() {
+        var destino = "http://localhost:8080/api/productos/" + document.getElementsByName("verID")[0].value;
+        var formulario = document.getElementById('verProducto');
+        formulario.action = destino;
+    }
+    function armadoURLUpdate() {
+        var destino = "http://localhost:8080/api/productos/upd/" + document.getElementsByName("updateID")[0].value;
+        var formulario = document.getElementById('actualizarProducto');
+        formulario.action = destino;
+    }
+    function armadoURLDelete() {
+        var destino = "http://localhost:8080/api/productos/del/" + document.getElementsByName("deleteID")[0].value;
+        var formulario = document.getElementById('eliminarProducto');
+        // formulario.method = "DELETE";
+        formulario.action = destino;
+    }    
+</script>
+
+</html>
